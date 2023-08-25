@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Form Assignment</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300&display=swap" rel="stylesheet">
+ <style>
+  body {
+   font-family: 'Source Code Pro', monospace;
+   margin: 0;
+   padding: 0;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   background-color: #c0ded9 ;
+   
+   
+  }
+
+  .container {
+   background-color: #ecf0f3	;
+   padding: 20px;
+   border-radius: 10px;
+   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+   width: 400px;
+  }
+
+  .form-group {
+   margin-bottom: 20px;
+  }
+
+  label {
+   font-weight: bold;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+   width: 90%;
+   color: #ecf0f3;
+   padding: 10px;
+   border: none ;
+   border-radius: 5px;
+   box-shadow: inset -5px -5px 12px #ffffff ,
+               inset 5px 5px 12px rgba(0, 0, 0, 0.20);
+  }
+
+  input[type="radio"] {
+   margin-right: 5px;
+  }
+
+  button {
+   background-color: #007bff;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   border-radius: 5px;
+   cursor: pointer;
+  }
+  h2{
+   display: flex;
+   justify-content: center;
+  }
+ </style>
+</head>
+
+<body>
+ <div class="container">
+  <h2>USER INFORMATION</h2>
+  <form id="userForm">
+   <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+   </div>
+   <div class="form-group">
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" name="phoneNumber" required>
+   </div>
+   <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+   </div>
+   <div class="form-group">
+    <label>Gender:</label>
+    <input type="radio" id="male" name="gender" value="male" required>
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="gender" value="female" required>
+    <label for="female">Female</label>
+   </div>
+   <button type="submit">SUBMIT</button>
+  </form>
+ </div>
+ <script>
+  document.getElementById("userForm").addEventListener("submit", function (event) {
+   event.preventDefault();
+   const formData = {
+    name: document.getElementById("name").value,
+    phoneNumber: document.getElementById("phoneNumber").value,
+    email: document.getElementById("email").value,
+    gender: document.querySelector('input[name="gender"]:checked').value
+   };
+   // Store form data in local storage
+   localStorage.setItem("userData", JSON.stringify(formData));
+   alert("User Information Submitted and stored !!");
+   // Clear form inputs
+   this.reset();
+  });
+ </script>
+</body>
+
+</html>
